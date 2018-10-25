@@ -1,0 +1,22 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index cc5cd3d..c6d63a6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -147,7 +147,7 @@ if(G2O_USE_OPENMP)
+   if(OPENMP_FOUND)
+     set (G2O_OPENMP 1)
+     set(g2o_C_FLAGS "${g2o_C_FLAGS} ${OpenMP_C_FLAGS}")
+-    set(g2o_CXX_FLAGS "${g2o_CXX_FLAGS} -DEIGEN_DONT_PARALLELIZE ${OpenMP_CXX_FLAGS}")
++    set(g2o_CXX_FLAGS "${g2o_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
+     message(STATUS "Compiling with OpenMP support")
+   endif(OPENMP_FOUND)
+ endif(G2O_USE_OPENMP)
+@@ -254,7 +254,7 @@ endif()
+ 
+ # Compiler specific options for gcc
+ if(CMAKE_COMPILER_IS_GNUCXX)
+-  option (BUILD_WITH_MARCH_NATIVE "Build with \"-march native\"" ON)
++  option (BUILD_WITH_MARCH_NATIVE "Build with \"-march native\"" OFF)
+   message(STATUS "Compiling with GCC")
+ 
+   # Generic settings for optimisation
